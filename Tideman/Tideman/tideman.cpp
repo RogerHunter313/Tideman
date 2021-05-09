@@ -48,7 +48,7 @@ int main() {
 	cin >> numCandidates;
 	cout << endl;
 
-	while(numCandidates < 2) {
+	while (numCandidates < 2) {
 		cout << "Must enter more than 1 candidate." << endl;
 		cout << "Please enter total number of candidates : " << flush;
 		cin >> numCandidates;
@@ -63,20 +63,20 @@ int main() {
 			cout << "exiting" << endl;
 			return 1;
 		}
-		cout <<  endl;
+		cout << endl;
 	}
 
 	cout << "You entered there are " << numCandidates << " candidates" << endl;
 
 	string name;
-	
+
 	for (int i = 0; i < numCandidates; i++) {
 		cout << "Name for candidate " << i + 1 << ": " << flush;
 		cin >> name;
 		cout << "Candidate " << i + 1 << " is " << name << endl;
 		candidates[i] = name;
 	}
-	
+
 	// Clear graph of locked in pairs
 	for (int i = 0; i < numCandidates; i++) {
 		for (int j = 0; j < numCandidates; j++) {
@@ -106,25 +106,24 @@ int main() {
 			cout << "Rank " << j + 1 << ": " << flush;
 			cin >> name;
 
-	/*		if (!vote(j, name, ranks)) {
+			if (!vote(j, name, ranks)) {
 				cout << "Invalid vote" << endl;
 				return 2;
-			}*/
+			}			
 		}
 		cout << endl;
 	}
-
-
 	return 0;
 }
 
 // Update ranks given a new vote
 bool vote(int rank, string name, vector<int> ranks) {
-	//for (int i = 0; i < numCandidates; i++) {
-	//	if ()
-	//}
-	return true;
+	for (int i = 0; i < numCandidates; i++) {
+		// check if entered name matches any names in the array of candidates
+		if (name.compare(candidates[i]) == 0) {
+			ranks[rank] = i;
+			return true;
+		}
+	}
+	return false;
 }
-
-
-
